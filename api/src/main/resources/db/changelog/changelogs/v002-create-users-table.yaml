@@ -1,0 +1,38 @@
+databaseChangeLog:
+  - changeSet:
+      id: v002-1-create-users-table
+      context: ddl
+      author: Joao Vitor de Oliveira Santos
+      changes:
+        - createTable:
+            schemaName: public
+            tableName: tb_users
+            columns:
+              - column:
+                  name: id
+                  type: number(12, 0)
+                  constraints:
+                    primaryKey: true
+                    primaryKeyName: pk_users
+              - column:
+                  name: name
+                  type: varchar(80)
+                  constraints:
+                    unique: true
+              - column:
+                  name: email
+                  type: varchar(100)
+                  constraints:
+                    unique: true
+              - column:
+                  name: password
+                  type: varchar(60)
+                  constraints:
+                    nullable: false
+  - changeSet:
+      id: v002-2-grant-permissions
+      context: ddl
+      author: Joao Vitor de Oliveira Santos
+      changes:
+        - sql:
+            sql: GRANT SELECT, INSERT, UPDATE, DELETE ON TABLE public.tb_users to dagendou;
