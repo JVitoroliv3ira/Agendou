@@ -3,57 +3,42 @@
     <div class="card">
       <div class="card-body register-card-body">
         <form>
-          <!-- Nome completo -->
-          <div class="mb-3">
-            <label class="form-label" for="name">Nome completo<span class="text-danger ml-1">*</span></label>
-            <div class="input-group">
-              <input id="name" class="form-control" type="text" placeholder="Digite seu nome completo" required>
-              <div class="input-group-append">
-                <div class="input-group-text">
-                  <span class="fas fa-user"></span>
-                </div>
-              </div>
-            </div>
-          </div>
 
-          <!-- E-mail -->
-          <div class="mb-3">
-            <label class="form-label" for="email">E-mail<span class="text-danger ml-1">*</span></label>
-            <div class="input-group">
-              <input id="email" class="form-control" type="email" placeholder="Digite seu e-mail" required>
-              <div class="input-group-append">
-                <div class="input-group-text">
-                  <span class="fas fa-envelope"></span>
-                </div>
-              </div>
-            </div>
-          </div>
+          <agendou-form-input
+            inputId="name"
+            label="Nome"
+            placeholder="Digite seu nome completo"
+            icon="fas fa-user"
+            (valueChange)="handleInputChangeEvent('name', $event)"
+          />
 
-          <!-- Senha -->
-          <div class="mb-3">
-            <label class="form-label" for="password">Senha<span class="text-danger ml-1">*</span></label>
-            <div class="input-group">
-              <input id="password" class="form-control" type="password" placeholder="Digite sua senha" required>
-              <div class="input-group-append">
-                <div class="input-group-text">
-                  <span class="fas fa-lock"></span>
-                </div>
-              </div>
-            </div>
-          </div>
+          <agendou-form-input
+            inputId="email"
+            label="E-mail"
+            type="email"
+            placeholder="Digite seu e-mail"
+            icon="fas fa-envelope"
+            (valueChange)="handleInputChangeEvent('email', $event)"
+          />
 
-          <!-- Botão de Registro -->
+          <agendou-form-input
+            inputId="password"
+            label="Senha"
+            type="password"
+            placeholder="Digite sua senha"
+            icon="fas fa-lock"
+            (valueChange)="handleInputChangeEvent('password', $event)"
+          />
+
           <div class="mb-3">
             <button type="submit" class="btn btn-primary btn-block">Registrar</button>
           </div>
         </form>
 
-        <!-- Link para Já possui uma conta? -->
         <div class="mb-3 text-center">
-          <a href="#" class="text-center">Já possui uma conta? Faça login</a>
+          <a routerLink="/auth/login" class="text-center">Já possui uma conta? Faça login</a>
         </div>
 
-        <!-- Versão do Sistema -->
         <div class="text-right">
           <small class="text-muted">Versão 1.0.0</small>
         </div>
