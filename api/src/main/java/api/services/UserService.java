@@ -20,7 +20,7 @@ public class UserService {
     }
 
     public void validateEmailUniqueness(String email) {
-        if (this.userRepository.existsByEmail(email)) {
+        if (this.userRepository.existsByEmailIgnoreCase(email)) {
             throw new ApiException(
                     EMAIL_NOT_UNIQUE_ERROR,
                     "email",
