@@ -7,13 +7,13 @@ import org.springframework.security.authentication.UsernamePasswordAuthenticatio
 import org.springframework.security.core.Authentication;
 
 public record UserAuthenticationRequest(
-        @NotNull(message = "O e-mail é obrigatório")
-        @Size(min = 5, max = 100, message = "O e-mail deve ter entre {min} e {max} caracteres")
-        @Email(message = "O e-mail deve ser válido")
+        @NotNull(message = "O e-mail é obrigatório.")
+        @Size(min = 5, max = 100, message = "O e-mail deve ter entre {min} e {max} caracteres.")
+        @Email(message = "O e-mail deve ser válido.")
         String email,
 
-        @NotNull(message = "A senha é obrigatória")
-        @Size(min = 8, message = "A senha deve ter pelo menos {min} caracteres")
+        @NotNull(message = "A senha é obrigatória.")
+        @Size(min = 8, message = "A senha deve ter pelo menos {min} caracteres.")
         String password
 ) {
 
