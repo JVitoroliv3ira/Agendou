@@ -3,12 +3,14 @@ import {CommonModule} from '@angular/common';
 import {FormInputComponent} from "./components/form-input/form-input.component";
 import {FormsModule} from "@angular/forms";
 import { ApplicationVersionComponent } from './components/application-version/application-version.component';
+import { ButtonComponent } from './components/button/button.component';
 
 
 @NgModule({
   declarations: [
     FormInputComponent,
-    ApplicationVersionComponent
+    ApplicationVersionComponent,
+    ButtonComponent
   ],
   imports: [
     CommonModule,
@@ -16,7 +18,8 @@ import { ApplicationVersionComponent } from './components/application-version/ap
   ],
   exports: [
     FormInputComponent,
-    ApplicationVersionComponent
+    ApplicationVersionComponent,
+    ButtonComponent
   ]
 })
 export class SharedModule {
