@@ -2,6 +2,8 @@ import {Component} from '@angular/core';
 import {AuthService} from "../../../../core/services/api/auth.service";
 import {FormBuilder, FormGroup} from "@angular/forms";
 import {finalize, take} from "rxjs";
+import {Router} from "@angular/router";
+import {ToastrService} from "ngx-toastr";
 
 @Component({
   selector: 'agendou-register-form',
@@ -13,7 +15,12 @@ export class RegisterFormComponent {
   public errors: { [key: string]: string[] } = {};
 
 
-  constructor(public authService: AuthService, public formBuilder: FormBuilder) {
+  constructor(
+    private authService: AuthService,
+    private formBuilder: FormBuilder,
+    private router: Router,
+    private toastr: ToastrService
+  ) {
     this.setupForm();
   }
 
@@ -29,7 +36,17 @@ export class RegisterFormComponent {
       .pipe(take(1), finalize(() => this.loading = false))
       .subscribe({
         next: (response) => {
-          console.log('Registration successful', response);
+          this.router.navigate(['auth', 'login']).then(() => {
+            this.toastr
+              .success(
+                response.content ?? 'Usuário cadastrado com sucesso!',
+                'Sucesso', {
+                  timeOut: 3000,
+                  closeButton: true,
+                  progressBar: true
+                }
+              )
+          });
         },
         error: (errorResponse) => {
           this.errors = errorResponse.error.errors || {};
