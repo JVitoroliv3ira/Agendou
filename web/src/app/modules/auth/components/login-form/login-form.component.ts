@@ -2,8 +2,8 @@ import {Component} from '@angular/core';
 import {FormBuilder, FormGroup} from "@angular/forms";
 import {AuthService} from "../../../../core/services/api/auth.service";
 import {Router} from "@angular/router";
-import {ToastrService} from "ngx-toastr";
 import {finalize, take} from "rxjs";
+import {AuthenticatedUserService} from "../../../../core/services/authenticated-user.service";
 
 @Component({
   selector: 'agendou-login-form',
@@ -19,7 +19,7 @@ export class LoginFormComponent {
     private authService: AuthService,
     private formBuilder: FormBuilder,
     private router: Router,
-    private toastr: ToastrService
+    private authenticatedUserService: AuthenticatedUserService
   ) {
     this.setupForm();
   }
@@ -35,8 +35,11 @@ export class LoginFormComponent {
       .login(this.form.value)
       .pipe(take(1), finalize(() => this.loading = false))
       .subscribe({
-        next: (response) => {
-          this.router.navigate(['app', 'home']).then(r => {});
+        next: (res) => {
+          if (res.content) {
+            this.authenticatedUserService.saveUser(res.content);
+          }
+          this.router.navigate(['app', 'home']);
         },
         error: (errorResponse) => {
           this.errors = errorResponse.error.errors || {};
