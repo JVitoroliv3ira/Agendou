@@ -30,4 +30,11 @@ export class AuthService extends AbstractHttpService {
       request
     );
   }
+
+  public refreshToken(refreshToken: string): Observable<ApiResponse<string>> {
+    return this.post<ApiResponse<string>>(
+      `${this.BASE_API_URL}${this.path}/token/refresh`,
+      {refreshToken}
+    );
+  }
 }
