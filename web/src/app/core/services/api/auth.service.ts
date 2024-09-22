@@ -11,20 +11,22 @@ import {AuthenticatedUserResponse} from "../../domain/dtos/responses/authenticat
   providedIn: 'root',
 })
 export class AuthService extends AbstractHttpService {
+  private readonly path = '/auth';
+
   constructor(http: HttpClient) {
     super(http);
   }
 
   public register(request: UserRegistrationRequest): Observable<ApiResponse<string>> {
     return this.post<ApiResponse<string>>(
-      "http://localhost:8080/api/v1/auth/register",
+      `${this.BASE_API_URL}${this.path}/register`,
       request
     );
   }
 
   public login(request: UserAuthenticationRequest): Observable<ApiResponse<AuthenticatedUserResponse>> {
     return this.post<ApiResponse<AuthenticatedUserResponse>>(
-      "http://localhost:8080/api/v1/auth/token",
+      `${this.BASE_API_URL}${this.path}/token`,
       request
     );
   }

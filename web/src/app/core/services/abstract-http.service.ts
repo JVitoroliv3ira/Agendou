@@ -1,11 +1,14 @@
 import {Injectable} from "@angular/core";
 import {HttpClient, HttpHeaders} from "@angular/common/http";
 import {Observable} from "rxjs";
+import {environment} from "../../../environments/environment";
 
 @Injectable({
   providedIn: 'root',
 })
 export abstract class AbstractHttpService {
+  protected readonly BASE_API_URL = environment.apiUrl;
+
   protected constructor(protected http: HttpClient) {
   }
 

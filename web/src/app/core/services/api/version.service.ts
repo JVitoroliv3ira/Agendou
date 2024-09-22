@@ -8,11 +8,15 @@ import {ApiResponse} from "../../domain/dtos/responses/api-response";
   providedIn: 'root',
 })
 export class VersionService extends AbstractHttpService {
+  private readonly path = '/version';
+
   constructor(http: HttpClient) {
     super(http);
   }
 
   public getVersion(): Observable<ApiResponse<string>> {
-    return this.get<ApiResponse<string>>('http://localhost:8080/api/v1/version');
+    return this.get<ApiResponse<string>>(
+      `${this.BASE_API_URL}${this.path}`
+    );
   }
 }
