@@ -2,44 +2,8 @@
   <div class="register-box">
     <div class="card">
       <div class="card-body register-card-body">
-        <form>
-
-          <agendou-form-input
-            inputId="name"
-            label="Nome"
-            placeholder="Digite seu nome completo"
-            icon="fas fa-user"
-            (valueChange)="handleInputChangeEvent('name', $event)"
-          />
-
-          <agendou-form-input
-            inputId="email"
-            label="E-mail"
-            type="email"
-            placeholder="Digite seu e-mail"
-            icon="fas fa-envelope"
-            (valueChange)="handleInputChangeEvent('email', $event)"
-          />
-
-          <agendou-form-input
-            inputId="password"
-            label="Senha"
-            type="password"
-            placeholder="Digite sua senha"
-            icon="fas fa-lock"
-            (valueChange)="handleInputChangeEvent('password', $event)"
-          />
-
-          <div class="mb-3">
-            <button type="submit" class="btn btn-primary btn-block">Registrar</button>
-          </div>
-        </form>
-
-        <div class="mb-3 text-center">
-          <a routerLink="/auth/login" class="text-center">Já possui uma conta? Faça login</a>
-        </div>
-
-        <agendou-application-version />
+        <agendou-register-form/>
+        <agendou-application-version/>
       </div>
     </div>
   </div>
