@@ -1,0 +1,18 @@
+databaseChangeLog:
+  - changeSet:
+      id: v001-1-create-users-sequence
+      context: ddl
+      author: Joao Vitor de Oliveira Santos
+      changes:
+        - createSequence:
+            schemaName: public
+            sequenceName: sq_users
+            startValue: 1
+            incrementBy: 1
+  - changeSet:
+      id: v001-2-grant-permissions
+      context: ddl
+      author: Joao Vitor de Oliveira Santos
+      changes:
+        - sql:
+            sql: GRANT USAGE, SELECT ON SEQUENCE public.sq_users TO dagendou;

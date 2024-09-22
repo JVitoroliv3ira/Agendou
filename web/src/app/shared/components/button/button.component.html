@@ -1,0 +1,12 @@
+<button
+  type="button"
+  class="btn btn-{{styleType}}"
+  [ngClass]="{'btn-block': block}"
+  [disabled]="disabled || loading"
+  (click)="onClick()"
+>
+  <span *ngIf="!loading">{{ label }}</span>
+  <span *ngIf="loading">
+    <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
+  </span>
+</button>
