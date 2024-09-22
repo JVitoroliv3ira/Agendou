@@ -1,0 +1,11 @@
+<div class="text-right">
+  <ng-container *ngIf="loading; else versionContent">
+    <span class="placeholder-glow">
+      <span class="placeholder col-4"></span>
+    </span>
+  </ng-container>
+
+  <ng-template #versionContent>
+    <small class="fw-bold" [ngClass]="errorOcurried ? 'text-danger' : 'text-success'">{{ version }}</small>
+  </ng-template>
+</div>

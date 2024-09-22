@@ -1,0 +1,43 @@
+<form [formGroup]="form" (ngSubmit)="login()">
+
+  <agendou-form-input
+    inputId="email"
+    label="E-mail"
+    type="email"
+    placeholder="Digite seu e-mail"
+    icon="fas fa-envelope"
+    [value]="form.get('email')?.value"
+    (valueChange)="handleInputChangeEvent('email', $event)"
+    [feedback]="errors['email']"
+  ></agendou-form-input>
+
+  <agendou-form-input
+    inputId="password"
+    label="Senha"
+    type="password"
+    placeholder="Digite sua senha"
+    icon="fas fa-lock"
+    [value]="form.get('password')?.value"
+    (valueChange)="handleInputChangeEvent('password', $event)"
+    [feedback]="errors['password']"
+  ></agendou-form-input>
+
+  <div *ngIf="errors['server']?.length" class="invalid-feedback d-block mb-3">
+    <div *ngFor="let error of errors['server']">{{ error }}</div>
+  </div>
+
+  <div class="mb-3">
+    <agendou-button
+      label="Entrar"
+      [loading]="loading"
+      [disabled]="loading || form.invalid"
+      styleType="primary"
+      (buttonClick)="login()"
+    ></agendou-button>
+  </div>
+
+</form>
+
+<div class="mb-3 text-center">
+  <a routerLink="/auth/register" class="text-center">Ainda não possui uma conta?</a>
+</div>
