@@ -15,6 +15,7 @@ export class FormInputComponent implements OnInit, OnDestroy {
   @Input() icon!: InputIcon;
   @Input() required = true;
   @Input() value = '';
+  @Input() feedback: string[] | null = null;
 
   @Output() valueChange: EventEmitter<string> = new EventEmitter();
 
